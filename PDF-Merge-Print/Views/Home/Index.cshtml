@@ -1,0 +1,99 @@
+@{
+    ViewData["Title"] = "Merge and Print PDF Documents";
+    var error = TempData["Error"] as string;
+    var success = TempData["Success"] as string;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0">Merge and Print PDF Documents</h2>
+                </div>
+
+                <div class="card-body">
+
+                    @* Alert banners for validation/processing feedback *@
+                    @if (!string.IsNullOrEmpty(error))
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            @error
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+                    @if (!string.IsNullOrEmpty(success))
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            @success
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <p class="text-muted">
+                        Upload one or more PDF files (portrait or landscape). If no files are selected,
+                        the sample PDFs from <code>wwwroot/SamplePDFs</code> will be used.
+                    </p>
+
+                    <form id="pdfForm" asp-controller="Home" asp-action="MergeAndDownload" method="post"
+                          enctype="multipart/form-data">
+
+                        @* Anti-forgery tokens used by both buttons *@
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <label for="pdfFiles" class="form-label fw-semibold">Select PDF Files</label>
+                            <input type="file" id="pdfFiles" name="files" class="form-control"
+                                   multiple accept=".pdf" />
+                            <div class="form-text">Only .pdf files are accepted. Multiple files allowed.</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <span class="fw-semibold">Selected Files:</span>
+                            <ul id="selectedFiles" class="list-unstyled mt-2 mb-0">
+                                <li class="text-muted fst-italic">No files selected — default PDF files will be used.</li>
+                            </ul>
+                        </div>
+
+                        @* Primary action buttons *@
+                        <div class="d-flex gap-2 flex-wrap">
+                            <button type="submit" id="btnDownload" class="btn btn-primary px-4" formaction="@Url.Action("MergeAndDownload", "Home")">
+                                Merge and Download
+                            </button>
+                            <button type="submit" id="btnPrint" class="btn btn-success px-4" formaction="@Url.Action("MergeAndPrint", "Home")">
+                                Merge and Print
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-footer text-muted small">
+                    If no PDFs are uploaded, files from <code>wwwroot/SamplePDFs</code> will be used.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Show the names of selected files before processing (Requirement 2).
+        document.getElementById('pdfFiles').addEventListener('change', function (e) {
+            var list = document.getElementById('selectedFiles');
+            list.innerHTML = '';
+
+            if (e.target.files.length === 0) {
+                list.innerHTML = '<li class="text-muted fst-italic">No files selected — default samples will be used.</li>';
+                return;
+            }
+
+            for (var i = 0; i < e.target.files.length; i++) {
+                var li = document.createElement('li');
+                li.textContent = '• ' + e.target.files[i].name;
+                li.className = 'text-dark';
+                list.appendChild(li);
+            }
+        });
+    </script>
+}
