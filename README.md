@@ -5,17 +5,26 @@
 This sample demonstrates how to build an ASP.NET Core web application that enables users to:
 
 - Upload multiple PDF documents.
-- Merge the uploaded PDF files into a single PDF document.
+- Merge the uploaded PDF files into a single PDF document using the [Syncfusion .NET PDF Library](https://www.syncfusion.com/document-sdk/net-pdf-library).
 - Download the merged PDF document.
-- Print the merged PDF document using PdfToImageConverter without using a PDF Viewer component.
+- Print the merged PDF document using the [Syncfusion PDF-to-Image converter](https://www.syncfusion.com/document-sdk/net-pdf-library/pdf-to-image) without using a PDF Viewer component.
 - Support both portrait and landscape PDF documents.
+
+## Syncfusion Products Used
+
+This sample uses the following Syncfusion products:
+
+| Product | Purpose | Documentation |
+|---------|---------|---------------|
+| [Syncfusion .NET PDF Library (Syncfusion.Pdf.Net.Core)](https://www.syncfusion.com/document-sdk/net-pdf-library) | Merging multiple PDF documents into a single PDF | [Merge PDF documents in C#](https://help.syncfusion.com/document-processing/pdf/pdf-library/net/merge-documents) |
+| [Syncfusion PDF-to-Image Converter (Syncfusion.PdfToImageConverter.Net.Core)](https://www.syncfusion.com/document-sdk/net-pdf-library/pdf-to-image) | Converting merged PDF pages to images for printing | [Convert PDF to image in C#](https://help.syncfusion.com/document-processing/pdf/conversions/pdf-to-image/net/convert-pdf-to-image) |
 
 ## Features
 
 - Multiple PDF upload support.
 - PDF merging using Syncfusion .NET PDF Library.
 - Download merged PDF.
-- Print merged PDF without PDF Viewer.
+- Print merged PDF without a PDF Viewer.
 - Automatic fallback to sample PDFs.
 - ASP.NET Core MVC implementation.
 
@@ -50,7 +59,7 @@ PDF3 (Portrait)
 ## Prerequisites
 
 - Visual Studio 2022 or later
-- .NET 8 SDK
+- .NET SDK (target framework: net10.0)
 - Windows Operating System (required for printing support)
 - Valid Syncfusion License Key
 
@@ -68,6 +77,7 @@ PDF-Merge-Print
 │
 ├── Controllers
 │   └── HomeController.cs
+├── Models
 ├── Services
 │   ├── PdfMergeService.cs
 │   └── PdfPrintService.cs
@@ -80,24 +90,26 @@ PDF-Merge-Print
 │       ├── PDF2.pdf
 │       └── PDF3.pdf
 ├── Program.cs
-└── README.md
+└── PDF-Merge-Print.csproj
 ```
 
 ## Syncfusion License Registration
 
+Set your Syncfusion license key:
+
 ```csharp
 using Syncfusion.Licensing;
 
-SyncfusionLicenseProvider.RegisterLicense(
-    "YOUR LICENSE KEY");
+SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
 ```
+A free community license is available at https://www.syncfusion.com/products/communitylicense.
 
 ## Integration Steps
 
 ### Step 1: Create ASP.NET Core MVC Project
 
 ```powershell
-dotnet new mvc -n PDFMergePrint
+dotnet new mvc -n PDF-Merge-Print
 ```
 
 ### Step 2: Install Required Packages
@@ -128,7 +140,7 @@ builder.Services.AddScoped<PdfPrintService>();
 PdfDocumentBase.Merge(destinationDocument, sourceStreams);
 ```
 
-The sample merges all uploaded PDFs into a single PDF document and creates Merged.pdf.
+The sample merges all uploaded PDFs into a single PDF document and creates `Merged.pdf`.
 
 ## Download Merged PDF
 
@@ -147,8 +159,7 @@ public IActionResult MergeAndDownload()
 ## Convert PDF to Images
 
 ```csharp
-PdfToImageConverter converter =
-    new PdfToImageConverter(pdfDocument);
+PdfToImageConverter converter = new PdfToImageConverter(pdfDocument);
 
 Image image = converter.Convert(pageIndex);
 ```
@@ -185,7 +196,7 @@ sample PDFs from wwwroot/SamplePDFs will be used.
 
 1. Open the solution.
 2. Restore NuGet packages.
-3. Register Syncfusion license key.
+3. Register the Syncfusion license key.
 4. Build and run the application.
 
 ### .NET CLI
@@ -212,7 +223,7 @@ dotnet run
 
 ### No Upload Scenario
 
-If no files are uploaded, PDFs from wwwroot/SamplePDFs are automatically merged and processed.
+If no files are uploaded, PDFs from `wwwroot/SamplePDFs` are automatically merged and processed.
 
 ## Error Handling
 
@@ -234,10 +245,10 @@ The sample validates:
 ## Supported Platforms
 
 - ASP.NET Core
-- .NET 8
+- .NET 10
 - Windows 10/11
 - Windows Server
 
 ## Conclusion
 
-This sample provides a complete workflow for uploading, merging, downloading, and printing PDF documents in ASP.NET Core using the Syncfusion .NET PDF Library. Printing is achieved through PdfToImageConverter and PrintDocument without relying on a PDF Viewer component.
+This sample provides a complete workflow for uploading, merging, downloading, and printing PDF documents in ASP.NET Core using the [Syncfusion .NET PDF Library](https://www.syncfusion.com/document-sdk/net-pdf-library). Printing is achieved through the [Syncfusion PDF-to-Image Converter](https://www.syncfusion.com/document-sdk/net-pdf-library/pdf-to-image) and `PrintDocument` without relying on a PDF Viewer component.
