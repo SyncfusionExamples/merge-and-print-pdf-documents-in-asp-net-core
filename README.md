@@ -57,8 +57,8 @@ PDF3 (Portrait)
 ## Required NuGet Packages
 
 ```powershell
-Install-Package Syncfusion.Pdf.NET
-Install-Package Syncfusion.PdfToImageConverter.Net
+Install-Package Syncfusion.Pdf.Net.Core
+Install-Package Syncfusion.PdfToImageConverter.Net.Core
 ```
 
 ## Project Structure
@@ -103,8 +103,8 @@ dotnet new mvc -n PDFMergePrint
 ### Step 2: Install Required Packages
 
 ```powershell
-Install-Package Syncfusion.Pdf.NET
-Install-Package Syncfusion.PdfToImageConverter.Net
+Install-Package Syncfusion.Pdf.Net.Core
+Install-Package Syncfusion.PdfToImageConverter.Net.Core
 ```
 
 ### Step 3: Add Sample PDFs
