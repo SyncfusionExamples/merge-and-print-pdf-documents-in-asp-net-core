@@ -95,21 +95,14 @@ PDF-Merge-Print
 
 ## Syncfusion License Registration
 
+Set your Syncfusion license key:
+
 ```csharp
 using Syncfusion.Licensing;
 
 SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
 ```
-
-### Get a Free 30-Day Trial License
-
-If you do not have a Syncfusion license, you can get a free 30-day trial license to run this sample without any limitations:
-
-1. Create or sign in to your [Syncfusion account](https://www.syncfusion.com/account/manage-trial/downloads).
-2. Start a [free 30-day trial](https://www.syncfusion.com/account/manage-trial/downloads) and download the license key.
-3. Register the license key in the sample as shown above.
-
-For more details, refer to [How to generate a Syncfusion license key](https://help.syncfusion.com/common/essential-studio/licensing/how-to-generate-license-key).
+A free community license is available at https://www.syncfusion.com/products/communitylicense.
 
 ## Integration Steps
 
