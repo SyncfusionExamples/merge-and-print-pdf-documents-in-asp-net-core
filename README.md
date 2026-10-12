@@ -19,13 +19,6 @@ This sample uses the following Syncfusion products:
 | [Syncfusion .NET PDF Library (Syncfusion.Pdf.Net.Core)](https://www.syncfusion.com/document-sdk/net-pdf-library) | Merging multiple PDF documents into a single PDF | [Merge PDF documents in C#](https://help.syncfusion.com/document-processing/pdf/pdf-library/net/merge-documents) |
 | [Syncfusion PDF-to-Image Converter (Syncfusion.PdfToImageConverter.Net.Core)](https://www.syncfusion.com/document-sdk/net-pdf-library/pdf-to-image) | Converting merged PDF pages to images for printing | [Convert PDF to image in C#](https://help.syncfusion.com/document-processing/pdf/conversions/pdf-to-image/net/convert-pdf-to-image) |
 
-Useful resources:
-
-- [Syncfusion .NET PDF Library – Product Overview](https://www.syncfusion.com/document-sdk)
-- [Syncfusion NuGet Packages (nuget.org)](https://www.nuget.org/packages?q=Syncfusion.Pdf)
-- [How to generate a Syncfusion license key](https://help.syncfusion.com/common/essential-studio/licensing/how-to-generate-license-key)
-- [Syncfusion File Formats Blog](https://www.syncfusion.com/blogs/category/pdf)
-
 ## Features
 
 - Multiple PDF upload support.
